@@ -1,0 +1,1530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="description" content="Disom Labs builds open-source technology, OlChikiLang programming language, Ethix OS, cybersecurity tools and language computing solutions.">
+
+    <meta name="keywords" content="Disom Labs, OlChikiLang, Santali Technology, Ol Chiki Programming Language, Cybersecurity Research, Ethix OS">
+
+    <meta name="author" content="Shibnath Hansda">
+
+    <title>Disom Labs | Open Source Technology, Language Computing & Cybersecurity Research</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Base Reset & Core Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background:
+            radial-gradient(circle at 20% 10%, rgba(132,204,22,.08), transparent 25%),
+            radial-gradient(circle at 80% 40%, rgba(16,185,129,.05), transparent 30%),
+          #0E1111;
+
+            color: #d1d5db;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            position: relative;
+            overflow-x: hidden;
+            content:"";
+        }
+
+        body::before{
+            content:"";
+            position:fixed;
+            inset:0;
+
+            background-image:
+            linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+
+            background-size:40px 40px;
+
+            pointer-events:none;
+            z-index:-1;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: inherit;
+            font: inherit;
+        }
+
+        /* Typography & Helper Classes */
+        .code-font {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .text-white { color: #ffffff; }
+        .text-lime-400 { color: #a3e635; }
+        .text-lime-500 { color: #84cc16; }
+        .text-gray-400 { color: #9ca3af; }
+        .text-gray-500 { color: #6b7280; }
+        .text-gray-600 { color: #4b5563; }
+        .text-red-500 { color: #ef4444; }
+        .text-amber-400 { color: #fbbf24; }
+        .bg-amber-950\/30 { background-color: rgba(69, 26, 3, 0.3); }
+        .bg-lime-950\/30 { background-color: rgba(26, 46, 5, 0.3); }
+        .bg-lime-950\/40 { background-color: rgba(26, 46, 5, 0.4); }
+        .bg-zinc-950\/20 { background-color: rgba(9, 9, 11, 0.2); }
+        .text-zinc-600 { color: #52525b; }
+        .hidden { display: none !important; }
+
+        /* Premium Effects */
+        .premium-glow {
+            box-shadow: 0 0 40px -10px rgba(132, 204, 22, 0.25);
+        }
+        .card-hover {
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-4px);
+            border-color: rgba(163, 230, 53, 0.4) !important;
+            box-shadow: 0 10px 30px -10px rgba(132, 204, 22, 0.15);
+            background-color: #151B1B !important;
+        }
+
+        /* Layout Architecture */
+        .max-w-7xl {
+             max-width: 1100px; 
+             margin: 0 auto; 
+        }
+        .max-w-5xl { 
+            max-width: 900px; 
+            margin: 0 auto;
+        }
+        .max-w-2xl { max-width: 42rem; }
+        .max-w-md { max-width: 28rem; }
+        .px-6{ 
+            padding-left: 1.5rem; 
+            padding-right: 1.5rem; 
+        }
+        .relative { position: relative; }
+        .absolute { position: absolute; }
+        .fixed { position: fixed; }
+        .inset-0 { top: 0; right: 0; bottom: 0; left: 0; }
+        .z-0 { z-index: 0; }
+        .z-10 { z-index: 10; }
+        .z-20 { z-index: 20; }
+        .z-40 { z-index: 40; }
+        .z-50 { z-index: 50; }
+        .w-full { width: 100%; }
+        .h-full { height: 100%; }
+
+        /* Header & Navigation */
+        header {
+            border-bottom: 1px solid #27272a;
+            background-color: rgba(14, 17, 17, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+        }
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 4.5rem;
+        }
+        .logo-wrap {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            flex-shrink: 0;
+        }
+       
+
+        .logo-box{
+            height:3.2rem;
+            width:3.2rem;
+            background:
+            radial-gradient(circle at center,
+            rgba(163,230,53,.15),
+            transparent 70%),
+            #0E1111;
+
+            border:1px solid rgba(163,230,53,.35);
+            border-radius:14px;
+
+            display:flex;
+            align-items:center;
+            justify-content:center;
+
+            position:relative;
+            overflow:hidden;
+
+            box-shadow:
+            0 0 30px rgba(163,230,53,.18),
+            inset 0 0 20px rgba(163,230,53,.05);
+        }
+
+
+        .logo-box::before{
+
+            content:"";
+            position:absolute;
+
+            inset:-40%;
+
+            background:
+            linear-gradient(
+            120deg,
+            transparent,
+            rgba(163,230,53,.35),
+            transparent
+            );
+
+            transform:rotate(25deg);
+
+            animation:logoSweep 4s infinite;
+
+        }
+
+
+        @keyframes logoSweep{
+
+            0%{
+                transform:translateX(-120%) rotate(25deg);
+            }
+
+            50%,100%{
+                transform:translateX(120%) rotate(25deg);
+            }
+
+        }
+
+
+        .logo-inner{
+
+            width:80%;
+            height:80%;
+
+            display:flex;
+            align-items:center;
+            justify-content:center;
+
+            background:#090b0b;
+
+            border-radius:10px;
+
+            z-index:2;
+
+        }
+
+
+        .logo-inner img{
+
+            width:90%;
+            height:90%;
+
+            object-fit:contain;
+
+            filter:
+            drop-shadow(0 0 8px rgba(163,230,53,.6));
+
+        }
+        
+       
+        .logo-text {
+            font-size: 1.25rem;
+            font-weight: 600;
+            letter-spacing: -0.025em;
+            color: #ffffff;
+        }
+        .logo-text span {
+            font-weight: 400;
+        }
+        nav.desktop-nav {
+            display: none;
+            align-items: center;
+            gap: 2rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #9ca3af;
+        }
+        nav.desktop-nav a {
+            transition: color 0.2s ease;
+        }
+        nav.desktop-nav a:hover {
+            color: #a3e635;
+        }
+
+        /* Hamburger Menu Icon */
+        #menu-btn {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 2rem;
+            height: 2rem;
+            gap: 0.375rem;
+        }
+        #menu-btn span {
+            width: 1.5rem;
+            height: 2px;
+            background-color: #d1d5db;
+            transition: all 0.3s ease;
+            border-radius: 0.25rem;
+        }
+
+        /* Mobile Menu Animations */
+        .nav-open #nav-line-1 { transform: translateY(8px) rotate(45deg); }
+        .nav-open #nav-line-2 { opacity: 0; }
+        .nav-open #nav-line-3 { transform: translateY(-8px) rotate(-45deg); }
+
+        #mobile-menu {
+            background-color: rgba(14, 17, 17, 0.98);
+            backdrop-filter: blur(20px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            font-size: 1.5rem;
+            font-weight: 500;
+            letter-spacing: 0.025em;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        #mobile-menu.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        #mobile-menu a {
+            transition: color 0.2s ease;
+        }
+        #mobile-menu a:hover {
+            color: #a3e635;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding-top: 8rem;
+            padding-bottom: 6rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: #18181b;
+            border: 1px solid #27272a;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            color: rgba(163, 230, 53, 0.9);
+            margin-bottom: 1.5rem;
+            backdrop-filter: blur(4px);
+        }
+        .badge-dot {
+            width: 0.5rem;
+            height: 0.5rem;
+            border-radius: 50%;
+            background-color: #84cc16;
+            animation: pulse-dot 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: .4; transform: scale(1.15); }
+        }
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: -0.05em;
+            line-height: 1.25;
+            margin-bottom: 1.5rem;
+        }
+        .hero-gradient-text {
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            background-image: linear-gradient(to right, #a3e635, #bef264, #10b981);
+        }
+        .hero p {
+            color: #9ca3af;
+            font-size: 1rem;
+            line-height: 1.625;
+            margin-bottom: 2.5rem;
+        }
+        .hero-btns {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            width: 100%;
+        }
+        .btn-primary {
+            background-color: #4d7c0f;
+            border: 1px solid rgba(163, 230, 53, .2);
+            color: #000000;
+            font-weight: 600;
+            font-size: 0.875rem;
+            padding: 0.875rem 2rem;
+            border-radius: 0.5rem;
+            transition: background-color 0.2s, transform 0.2s;
+            display: block;
+            text-align: center;
+            box-shadow:
+            0 0 50px rgba(132, 204, 22, 0.08);
+        }
+        .btn-primary:hover {
+            background-color: #a3e635;
+            transform: translateY(-1px);
+        }
+        .btn-secondary {
+            background-color: #18181b;
+            border: 1px solid #27272a;
+            color: #d1d5db;
+            font-weight: 500;
+            font-size: 0.875rem;
+            padding: 0.875rem 2rem;
+            border-radius: 0.5rem;
+            transition: background-color 0.2s, border-color 0.2s;
+            display: block;
+            text-align: center;
+        }
+        .btn-secondary:hover {
+            background-color: #27272a;
+            border-color: #3f3f46;
+        }
+
+        /* Metrics Matrix Grid */
+        .metrics-section {
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+            margin-bottom: 4rem;
+        }
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1.5rem;
+            padding: 1.5rem;
+            background-color: rgba(24, 24, 27, 0.4);
+            border: 1px solid #27272a;
+            border-radius: 1rem;
+            backdrop-filter: blur(4px);
+        }
+        .metric-item {
+            text-align: center;
+        }
+        .metric-val {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+        .metric-label {
+            font-size: 0.75rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .metric-col-span-2 {
+            grid-column: span 2 / span 2;
+            border-top: 1px solid rgba(39, 39, 42, 0.6);
+            padding-top: 1rem;
+        }
+
+        /* Section Global Typography */
+        .section-header {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+        .section-tag {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            color: #84cc16;
+            margin-bottom: 0.5rem;
+        }
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        /* Shared Grids & Cards */
+        .domain-section {
+            padding-top: 5rem;
+            padding-bottom: 5rem;
+            border-top: 1px solid #1f2424;
+        }
+        .domain-grid {
+            display: grid;
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+            gap: 1.5rem;
+        }
+        .card-bg {
+            background-color: rgba(24,24,27,.45);
+            border: 1px solid #27272a;
+            backdrop-filter: blur(12px);
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            animation: fadeUp .8s ease forwards;
+        }
+        .card-icon {
+            width:52px;
+            height:52px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+
+            border:1px solid rgba(163,230,53,.2);
+            border-radius:12px;
+
+            background:rgba(163,230,53,.05);
+
+            color:#a3e635;
+            font-size:1rem;
+            font-weight:700;
+
+            margin-bottom:1rem;
+        }
+
+        .card-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+        .card-desc-xs {
+            font-size: 0.85rem;
+            color: #9ca3af;
+            line-height: 1.625;
+        }
+
+        /* Projects Suites Layout */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .projects-card {
+            background-color: rgba(24, 24, 27, .45);
+            border: 1px solid #27272a;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            backdrop-filter:blur(12px);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 250px;
+        }
+        .projects-card .type-tag {
+            font-size: 0.75rem;
+            color: #a3e635;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+        .projects-card p {
+            font-size: 0.875rem;
+            color: #9ca3af;
+            line-height: 1.625;
+            margin-bottom: 1.5rem;
+        }
+        .card-footer-action {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(39, 39, 42, 0.6);
+            margin-top: auto;
+        }
+        .badge-status {
+            font-size: 11px;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+        }
+        .action-link {
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: #a3e635;
+            transition: color 0.2s;
+        }
+        .action-link:hover {
+            color: #bef264;
+            text-decoration: underline;
+        }
+
+        /* Developer Hub Layout */
+        .dev-hub-section {
+            padding-top: 5rem;
+            padding-bottom: 5rem;
+            border-top: 1px solid #1f2424;
+        }
+        .dev-hub-grid {
+            display: grid;
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+            gap: 2.5rem;
+            align-items: start;
+        }
+        .dev-hub-intro p {
+            font-size: 0.95rem;
+            color: #9ca3af;
+            line-height: 1.625;
+            margin-bottom: 2rem;
+        }
+        .tabs-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        .tab-btn {
+            width: 100%;
+            text-align: left;
+            padding: 1rem;
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.2s ease;
+            background-color: rgba(24, 24, 27, 0.2);
+            border: 1px solid rgba(39, 39, 42, 0.4);
+        }
+        .tab-btn.active {
+            background-color: #18181b;
+            border: 1px solid rgba(132, 204, 22, 0.5);
+        }
+        .tab-btn-title-wrap {
+            display: flex;
+            align-items: center;
+            gap: 0.875rem;
+        }
+        .status-dot {
+            width: 0.5rem;
+            height: 0.5rem;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            background-color: #3f3f46;
+        }
+        .tab-btn.active .status-dot {
+            background-color: #84cc16;
+            box-shadow: 0 0 10px #84cc16;
+        }
+        .tab-btn span.title {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #9ca3af;
+        }
+        .tab-btn.active span.title {
+            color: #ffffff;
+        }
+        .tab-btn span.badge-tag {
+            font-size: 10px;
+            padding: 0.125rem 0.5rem;
+            border-radius: 0.25rem;
+            background-color: rgba(39, 39, 42, 0.6);
+            color: #a3e635;
+            border: 1px solid rgba(63, 98, 18, 0.2);
+        }
+
+        /* Terminal System Graphic */
+        .terminal-container {
+            background-color: #111414;
+            border:1px solid rgba(163,230,53,.2);
+            box-shadow:
+            0 0 50px rgba(132,204,22,.08);
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            width: 100%;
+        }
+        .terminal-header {
+            background-color: #18181b;
+            border-bottom: 1px solid #27272a;
+            padding: 0.875rem 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .terminal-dots {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .tdot { width: 0.75rem; height: 0.75rem; border-radius: 50%; }
+        .tdot-r { background-color: #ef4444; opacity: 0.6; }
+        .tdot-y { background-color: #eab308; opacity: 0.6; }
+        .tdot-g { background-color: #22c55e; opacity: 0.6; }
+        #terminal-filename {
+            font-size: 0.75rem;
+            color: #9ca3af;
+            white-space: nowrap;
+        }
+        #terminal-badge {
+            font-size: 10px;
+            color: #a3e635;
+            background-color: rgba(26, 46, 5, 0.3);
+            padding: 0.125rem 0.5rem;
+            border: 1px solid rgba(63, 98, 18, 0.4);
+            border-radius: 0.25rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .terminal-body {
+            padding: 1.5rem;
+            font-size: 0.825rem;
+            overflow-x: auto;
+            min-height: 280px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background: linear-gradient(to bottom, #111414, #0E1111);
+        }
+        #terminal-content {
+            line-height: 1.625;
+            color: #bef264;
+            white-space: pre;
+        }
+        .terminal-footer {
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid #27272a;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            color: #6b7280;
+        }
+        .sync-active {
+            color: #a3e635;
+        }
+
+        /* Principal Investigator Grid */
+        .author-section {
+            padding-top: 5rem;
+            padding-bottom: 5rem;
+            border-top: 1px solid #1f2424;
+        }
+        .author-card {
+            background: linear-gradient(to bottom right, #18181b, #0E1111, #0E1111);
+            border: 2px solid #27272a;
+            padding: 1.5rem;
+            border-radius: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+            align-items: center;
+            backdrop-filter: blur(12px);
+            position: relative;
+            overflow: hidden;
+        }
+        .blur-bg-1, .blur-bg-2 {
+            position: absolute;
+            width: 24rem;
+            height: 24rem;
+            background-color: rgba(132, 204, 22, 0.03);
+            border-radius: 50%;
+            filter: blur(64px);
+            pointer-events: none;
+        }
+        .blur-bg-1 { top: -6rem; left: -6rem; }
+        .blur-bg-2 { bottom: -6rem; right: -6rem; }
+        
+        .avatar-wrap {
+            position: relative;
+            flex-shrink: 0;
+        }
+        .avatar-glow {
+            position: absolute;
+            top: 0; right: 0; bottom: 0; left: 0;
+            background: linear-gradient(to top right, #4d7c0f, #a3e635, #27272a);
+            border-radius: 50%;
+            filter: blur(8px);
+            opacity: 0.2;
+            transition: opacity 0.5s;
+        }
+        .avatar-wrap:hover .avatar-glow { opacity: 0.4; }
+        .avatar-box {
+            width: 9rem;
+            height: 9rem;
+            border-radius: 50%;
+            border: 2px solid #3f3f46;
+            padding: 0.5rem;
+            background-color: #18181b;
+            position: relative;
+            z-index: 10;
+        }
+        .avatar-inner {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            overflow: hidden;
+            background: linear-gradient(to bottom, #27272a, #09090b);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .avatar-inner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.9;
+            transition: transform 0.5s ease;
+        }
+        .avatar-wrap:hover .avatar-inner img { transform: scale(1.05); }
+        .live-dot-pulse {
+            position: absolute;
+            bottom: 0.5rem;
+            right: 0.5rem;
+            background-color: #84cc16;
+            border: 4px solid #0E1111;
+            width: 1.25rem;
+            height: 1.25rem;
+            border-radius: 50%;
+            z-index: 20;
+            animation: pulse-dot 2s infinite;
+        }
+
+        .author-details {
+            flex-grow: 1;
+            width: 100%;
+        }
+        .author-head-row {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #27272a;
+        }
+        .author-head-row h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            color: #ffffff;
+        }
+        .tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .author-meta-tag {
+            padding: 0.25rem 0.75rem;
+            background-color: #18181b;
+            border: 1px solid #27272a;
+            font-size: 11px;
+            color: #9ca3af;
+            border-radius: 0.375rem;
+        }
+        .author-desc {
+            color: #9ca3af;
+            font-size: 0.875rem;
+            line-height: 1.625;
+            margin-bottom: 2rem;
+        }
+        .author-skills-grid {
+            display: grid;
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+            gap: 1rem;
+            margin-top:2rem;
+            margin-bottom: 2rem;
+        }
+        .skill-box {
+            padding: 1rem;
+            background-color: rgba(24, 24, 27, 65);
+            border: 1px solid rgba(163, 230, 53, 12);
+            border-radius: 14px;
+        }
+        .skill-box .title { font-size: 0.75rem; font-weight: 600; color: #ffffff; margin-bottom: 0.25rem; }
+        .skill-box .sub { font-size: 11px; color: #52525b; }
+
+        .author-socials {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            font-size: 0.75rem;
+            color: #52525b;
+            border-top: 1px solid rgba(39, 39, 42, 0.6);
+            padding-top: 1rem;
+        }
+        .author-socials a:hover { color: #ffffff; }
+        .author-socials a.highlight-hover:hover { color: #a3e635; }
+        .truncate-mail { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 240px; }
+
+        .about-card{
+            max-width:900px;
+            margin:auto;
+            padding:3rem;
+        }
+
+        .about-text{
+            color:#d1d5db;
+            font-size:1.05rem;
+            line-height:1.9;
+            margin-bottom:1.5rem;
+        }
+
+        .about-highlights{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+            gap:1rem;
+            margin-top:2rem;
+        }
+
+        .highlight-item{
+            padding:1.2rem;
+            border:1px solid rgba(163,230,53,.15);
+            border-radius:12px;
+            background:rgba(255,255,255,.02);
+        }
+
+        .highlight-item h3{
+            color:#a3e635;
+            margin-bottom:.5rem;
+        }
+
+        .highlight-item p{
+            color:#9ca3af;
+            font-size:.95rem;
+        }
+
+        .about-quote{
+            margin-top:2rem;
+            padding-top:1.5rem;
+            border-top:1px solid rgba(163,230,53,.15);
+            text-align:center;
+        }
+
+        .about-quote span{
+            color:#a3e635;
+            font-style:italic;
+            font-size:1rem; 
+        }
+
+        /* Global Footer Layout */
+        footer.global-footer {
+            border-top: 1px solid #1f2424;
+            background:
+            linear-gradient(
+            to top,
+          #080909,
+          #0A0D0D
+        );
+            padding-top: 3rem;
+            padding-bottom: 3rem;
+            font-size: 0.75rem;
+            color: #4b5563;
+        }
+        .footer-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+        }
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+        .footer-links a:hover { color: #9ca3af; }
+            
+
+        .founder-badge{
+            display:inline-block;
+            margin-top:.8rem;
+            padding:.45rem .9rem;
+            background:rgba(163,230,53,.08);
+            border:1px solid rgba(163,230,53,.25);
+            color:#a3e635;
+            border-radius:999px;
+            font-size:.75rem;
+            letter-spacing:.08em;
+        }
+
+
+        .founder-stats{
+            display:grid;
+            grid-template-columns:repeat(3,1fr);
+            gap:1rem;
+            margin:2rem 0;
+        }
+
+        .fstat{
+            text-align:center;
+            padding:1rem;
+            border:1px solid rgba(163,230,53,.15);
+            border-radius:12px;
+            background:rgba(255,255,255,.02);
+        }
+
+        .fstat h4{
+            color:#a3e635;
+            font-size:1.3rem;
+        }
+
+        .fstat span{
+            color:#9ca3af;
+            font-size:.8rem;
+        }
+
+
+
+        /* Responsive Media Query Breakpoints */
+        @media (min-width: 640px) {
+            .hero-btns { flex-direction: row; justify-content: center; }
+            .hero-btns a { width: auto; }
+            .domain-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .author-skills-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+            .truncate-mail { max-width: none; }
+        }
+        @media (min-width: 768px) {
+            nav.desktop-nav { display: flex; }
+            #menu-btn { display: none; }
+            .hero h1 { font-size: 3.75rem; }
+            .hero p { font-size: 1.125rem; }
+            .metrics-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); padding: 2rem; }
+            .metric-item:not(:last-child) { border-right: 1px solid #27272a; }
+            .metric-val { font-size: 1.875rem; }
+            .metric-col-span-2 { grid-column: span 1 / span 1; border-top: 0; padding-top: 0; }
+            .section-header { text-align: left; }
+            .section-title { font-size: 1.875rem; }
+            .ecosystem-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .author-card { padding: 3rem; flex-direction: row; gap: 3rem; align-items: start; }
+            .author-head-row { flex-direction: row; align-items: center; justify-content: space-between; }
+            .author-desc { text-align: left; }
+            .author-socials { justify-content: flex-start; gap: 1.5rem; }
+            .footer-container { flex-direction: row; }
+        }
+        @media (min-width: 1024px) {
+            .domain-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+            .projects-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+            .dev-hub-grid { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+            .dev-hub-intro { grid-column: span 5 / span 5; }
+            .terminal-container { grid-column: span 7 / span 7; }
+        }
+
+        @media (min-width:768px){
+            .projects-grid{
+                grid-template-columns:repeat(2,minmax(0,1fr));
+            }
+        }
+
+        @media (min-width:1024px){
+            .projects-grid{
+                grid-template-columns:repeat(3,minmax(0,1fr));
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <canvas id="bg-canvas" class="fixed inset-0 w-full h-full pointer-events-none z-0" style="opacity: 0.15;"></canvas>
+
+    <header class="z-50">
+        <div class="max-w-7xl px-6 header-container">
+            <div class="logo-wrap">
+                <div class="logo-box premium-glow">
+                    <div class="logo-inner">
+                        <img src="assets/disomlabs-logo.png" alt="Disom Labs Logo">
+                    </div>
+                </div>
+                <span class="logo-text">Disom <span class="text-lime-400">Labs</span></span>
+            </div>
+            
+            <nav class="desktop-nav">
+                <a href="#">Home</a>
+                <a href="#research">Research</a>
+                <a href="#projects">Projects</a>
+                <a href="#author">Author</a>
+            </nav>
+
+            <button id="menu-btn" aria-label="Toggle Menu">
+                <span id="nav-line-1"></span>
+                <span id="nav-line-2"></span>
+                <span id="nav-line-3"></span>
+            </button>
+        </div>
+    </header>
+
+    <div id="mobile-menu" class="fixed inset-0 z-40">
+        <a href="#" class="mobile-link">Home</a>
+        <a href="#research" class="mobile-link">Research</a>
+        <a href="#projects" class="mobile-link">projects</a>
+        <a href="#author" class="mobile-link">Author</a>
+    </div>
+
+    <section class="relative z-10 max-w-5xl px-6 hero">
+        <div class="badge">
+            <span class="badge-dot"></span>
+            <span>Next-Gen Infrastructure & Computational Research</span>
+        </div>
+        <h1>
+            Building Open Technology for <br>
+            <span class="hero-gradient-text">Santali & Beyond</span>
+        </h1>
+        <p class="max-w-2xl">
+           Disom Labs develops open-source technologies,
+            language computing systems, cybersecurity platforms,
+            and digital tools that empower communities through innovation.
+        </p>
+        <div class="hero-btns px-6 max-w-md">
+            <a href="#research" class="btn-primary premium-glow">
+                Explore Research
+            </a>
+            <a href="#projects" class="btn-secondary">
+                View Projects
+            </a>
+        </div>
+    </section>
+    
+    <section class="relative z-10 max-w-7xl px-6 metrics-section">
+        <div class="metrics-grid">
+            <div class="metric-item">
+                <div class="metric-val code-font">4</div>
+                <div class="metric-label">Active Projects</div>
+            </div>
+            <div class="metric-item">
+                <div class="metric-val text-lime-400 code-font">Open Source</div>
+                <div class="metric-label"></div>
+            </div>
+            <div class="metric-item">
+                <div class="metric-val code-font">Made In India</div>
+                <div class="metric-label"></div>
+            </div>
+            <div class="metric-item">
+                <div class="metric-val text-lime-400 code-font">Community Driven</div>
+                <div class="metric-label"></div>
+            </div>
+            <div class="metric-item metric-col-span-2">
+                <div class="metric-val text-lime-400 code-font">Santali Focused</div>
+                <div class="metric-label"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="domain-section">
+        <div class="max-w-5xl px-6">
+
+            <div class="section-header">
+                <h2 class="section-tag code-font">ABOUT_DISOM</h2>
+                <p class="section-title">
+                    Building Technology for Language, Security & Innovation
+                </p>
+            </div>
+
+            <div class="card-bg premium-glow about-card">
+
+                <p class="about-text">
+                    Disom Labs is an independent technology and research initiative
+                    focused on language computing, cybersecurity, open-source software,
+                    and digital innovation.
+                </p>
+
+                <p class="about-text">
+                    We believe every language deserves a place in the digital world.
+                    Yet many indigenous and regional languages remain underserved by
+                    modern technology. Our mission is to bridge this gap by building
+                    tools, platforms, and digital infrastructure that make technology
+                    more accessible, inclusive, and future-ready.
+                </p>
+
+                <p class="about-text">
+                    Through projects such as OlChikiLang, Ethix OS, and Santali
+                    Keyboard, we are creating practical solutions that empower
+                    developers, learners, researchers, and communities through
+                    open technology.
+                </p>
+
+                <p class="about-text">
+                    Beyond software development, Disom Labs explores emerging areas
+                    including language processing, artificial intelligence,
+                    cybersecurity research, operating systems, and developer tools
+                    to create long-term impact for future generations.
+                </p>
+
+            <div class="about-highlights">
+
+                <div class="highlight-item">
+                    <h3>Language Technology</h3>
+                    <p>
+                        Programming languages, keyboards, OCR systems,
+                        NLP research, and digital language preservation.
+                    </p>
+                </div>
+
+                <div class="highlight-item">
+                    <h3>Cybersecurity Research</h3>
+                    <p>
+                        Security-focused tools, privacy technologies,
+                        and operating system development.
+                    </p>
+                </div>
+
+                <div class="highlight-item">
+                    <h3>Open Source Ecosystem</h3>
+                    <p>
+                        Community-driven projects designed for transparency,
+                        accessibility, and collaboration.
+                    </p>
+                </div>
+
+                <div class="highlight-item">
+                    <h3>Future Innovation</h3>
+                    <p>
+                        AI, language computing, digital infrastructure,
+                        and next-generation developer platforms.
+                    </p>
+                </div>
+
+                </div>
+
+                <div class="about-quote">
+                    <span>
+                        "Empowering communities through language,
+                        technology, security, and open innovation."
+                    </span>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+
+    <section id="research" class="relative z-10 max-w-7xl px-6 domain-section">
+        <div class="section-header">
+            <h2 class="section-tag code-font">WHAT_WE_DO</h2>
+            <p class="section-title">Core Research & Development Areas</p>
+        </div>
+
+        <div class="domain-grid">
+            <div class="card-bg card-hover">
+                <div class="card-icon">OL</div>
+                <h3 class="card-title">OlChiki Computing</h3>
+                <p class="card-desc-xs">Architecting native computer system interfaces, rendering pipelines, and bytecode engines mapped explicitly to script-level primitives.</p>
+            </div>
+            <div class="card-bg card-hover">
+                <div class="card-icon">NLP</div>
+                <h3 class="card-title">Santali NLP</h3>
+                <p class="card-desc-xs">Building state-of-the-art tokenizers, localized language semantic datasets, and neural parsing layouts for highly accurate text translations.</p>
+            </div>
+            <div class="card-bg card-hover">
+                <div class="card-icon">SYS</div>
+                <h3 class="card-title">Language Technology</h3>
+                <p class="card-desc-xs">Developing decentralized lexical standards, optical character recognition (OCR) arrays, and localized speech-to-text engines.</p>
+            </div>
+            <div class="card-bg card-hover">
+                <div class="card-icon text-red-500">SEC</div>
+                <h3 class="card-title">Cybersecurity Research</h3>
+                <p class="card-desc-xs">Conducting proactive penetration matrix testing, custom kernel mitigation setups, and secure cryptography frameworks.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="relative z-10 max-w-7xl px-6 domain-section">
+        <div class="section-header">
+            <h2 class="section-tag code-font">CORE_ECOSYSTEM</h2>
+            <p class="section-title">Integrated Production Suites</p>
+        </div>
+
+        <div class="projects-grid">
+            <div class="projects-card card-hover">
+                <div>
+                    <div class="code-font type-tag">[Programming Language]</div>
+                    <h3 class="card-title">OlChikiLang</h3>
+                    <p class="card-desc">A highly specialized production language engineered to enable native-level software execution using classical Ol Chiki linguistic structures</p>
+                </div>
+                <div class="card-footer-action">
+                    <span class="text-xs code-font text-amber-400 bg-amber-950\/30 badge-status">Version 1.0.0</span>
+                    <a href="https://olchikilang.netlify.app/" target="_blank" class="action-link">Visit Website &rarr;</a>
+                </div>
+            </div>
+
+            <div class="projects-card card-hover">
+                <div>
+                    <div class="code-font type-tag">[OPERATING SYSTEM]</div>
+                    <h3 class="card-title">Ethix-OS</h3>
+                    <p class="card-desc">Security-hardened, custom-kernel operating system architected for native language system calls and advanced digital defense infrastructure.</p>
+                </div>
+                <div class="card-footer-action">
+                    <span class="text-xs code-font text-lime-400 bg-lime-950\/30 badge-status">In Development</span>
+                    <a href="https://ethixos.netlify.app/" class="action-link">Launching Soon &rarr;</a>
+                </div>
+            </div>
+
+            <div class="projects-card card-hover">
+                <div>
+                    <div class="code-font type-tag">[Santali Keyboard]</div>
+                    <h3 class="card-title">OlChikiME</h3>
+                    <p class="card-desc">A Santali-focused gaming keyboard designed to provide a smooth typing experience with Ol Chiki script support. Built to improve digital accessibility, gaming communication, and native language interaction for Santali users.</p>
+                </div>
+                <div class="card-footer-action">
+                    <span class="text-xs code-font text-lime-400 bg-lime-950\/30 badge-status">In Development</span>
+                    <a href="#" class="action-link">Launching Soon &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="author" class="relative z-10 max-w-7xl px-6 author-section">
+        <div class="section-header">
+            <h2 class="section-tag code-font">FOUNDER</h2>
+            <p class="section-title">The Person Behind Disom Labs</p>
+        </div>
+
+        <div class="author-card">
+            <div class="blur-bg-1"></div>
+            <div class="blur-bg-2"></div>
+            
+            <div class="avatar-wrap">
+                <div class="avatar-glow"></div>
+                <div class="avatar-box">
+                    <div class="avatar-inner">
+                        <img src="assets/author.jpeg" alt="Lead Architect Avatar">
+                    </div>
+                </div>
+                <div class="live-dot-pulse"></div>
+            </div>
+
+            <div class="author-details">
+                <div class="author-head-row">
+                    <div>
+                        <h3>Shibnath Hansda</h3>
+                        <div class="founder-badge code-font">
+                            Founder & Lead Researcher
+                        </div>
+                        <div class="tags-container" style="margin-top: 0.5rem;">
+                            <span class="author-meta-tag code-font">Systems Architect</span>
+                            <span class="author-meta-tag code-font">Compiler Dev</span>
+                            <span class="author-meta-tag code-font">Cybersecurity Specialist</span>
+                        </div>
+                    </div>
+                </div>
+                <p class="author-desc">
+                    Shibnath Hansda is the Founder of Disom Labs, an independent
+                    technology and research initiative focused on language computing,
+                    cybersecurity, open-source software, and digital innovation.
+
+                    He leads the development of projects including OlChikiLang,
+                    Ethix OS, and other community-driven technologies aimed at
+                    strengthening digital access, language preservation, and
+                    open technological innovation for future generations.
+
+                    His work combines software engineering, security research,
+                    and language technology to build practical tools that create
+                    real-world impact for underserved communities.
+                </p>
+
+                <div class="author-skills-grid">
+                    <div class="skill-box">
+                        <div class="title code-font">Programming Languages</div>
+                        <div class="sub code-font">Python • C • JavaScript • Rust</div>
+                    </div>
+                    <div class="skill-box">
+                        <div class="title code-font">Cybersecurity</div>
+                        <div class="sub code-font">Research • Linux • Security</div>
+                    </div>
+                    <div class="skill-box">
+                        <div class="title code-font">Open Source Development</div>
+                        <div class="sub code-font">GitHub • Open Source • Community</div>
+                    </div>
+
+                </div>
+
+                <div class="founder-stats">
+
+                    <div class="fstat">
+                        <h4>3+</h4>
+                        <span>Projects</span>
+                    </div>
+
+                    <div class="fstat">
+                        <h4>Open</h4>
+                        <span>Source</span>
+                    </div>
+
+                    <div class="fstat">
+                        <h4>2026</h4>
+                        <span>Founded</span>
+                    </div>
+
+                </div>
+
+                <div class="author-socials">
+                 <a href="https://github.com/DisomLabs" target="_blank">
+                GitHub →
+                </a>
+
+                <a href="https://www.linkedin.com/" target="_blank">
+                LinkedIn →
+                </a>
+
+                <a href="https://instagram.com/disomlabs" target="_blank">
+                Instagram →
+                </a>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="global-footer">
+        <div class="max-w-7xl px-6 footer-container">
+            <p class="code-font">&copy; 2026 Disom Labs. All computational models and core architecture specifications reserved.</p>
+            <div class="footer-links code-font">
+                <a href="#">Privacy Framework</a>
+                <a href="#">Security Registry</a>
+                <a href="#">System Mirror Status</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Responsive Menu Functionality
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuBtn.addEventListener('click', () => {
+            menuBtn.classList.toggle('nav-open');
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Close Mobile Menu on Click on Links
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                menuBtn.classList.remove('nav-open');
+                mobileMenu.classList.remove('active');
+            });
+        });
+
+        // Interactive Terminal Portal Console Datasets
+        const terminalData = {
+            ethix: {
+                filename: 'ethix_kernel.sys',
+                badge: 'PRODUCTION READY',
+                content: `[INFO] Initializing ETHIX-OS Kernel Pipeline...\n[OK] Virtual memory mapping layer secure.\n[OK] Enforcing high-integrity microkernel architecture isolation.\n[WARN] Security parameters deployed under sandbox configurations.\n$ ethix-core-compile --target=native_olchiki\n[SUCCESS] Custom base kernel compiled without warnings. Ready.`
+            },
+            olchiki: {
+                filename: 'olchiki_parser.rs',
+                badge: 'ACTIVE PARSER',
+                content: `pub fn parse_linguistic_matrix(input: &str) -> Result<ByteCode, EngineError> {\n    let mut stream = TokenStream::new(input);\n    log::info!("Tokenizing native system structures...");\n    // Mapping script primitives explicitly to register layout\n    let matrix = stream.evaluate_matrix_primitives()?;\n    Ok(matrix.compile_to_llvm_ir())\n}`
+            },
+            crypto: {
+                filename: 'secure_crypt.go',
+                badge: 'ENCRYPT ENGINE',
+                content: `package main\n\nimport "crypto/sha3"\n\nfunc GenerateSecureQuantumBlock(data []byte) []byte {\n\thash := sha3.New512()\n\thash.Write(data)\n\t// Matrix block mitigation validation routine\n\treturn hash.Sum(nil)\n}`
+            }
+        };
+
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        const terminalFilename = document.getElementById('terminal-filename');
+        const terminalBadge = document.getElementById('terminal-badge');
+        const terminalContent = document.getElementById('terminal-content');
+
+        // Setup Terminal Default State
+        if (terminalContent) {
+            terminalContent.textContent = terminalData.ethix.content;
+        }
+
+        tabButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                tabButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const targetKey = btn.getAttribute('data-target');
+                const targetData = terminalData[targetKey];
+                
+                if (targetData) {
+                    terminalFilename.textContent = targetData.filename;
+                    terminalBadge.textContent = targetData.badge;
+                    terminalContent.textContent = targetData.content;
+                }
+            });
+        });
+
+        // High-Tech Digital Network Matrix Particle Graph Canvas
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+
+        const particles = [];
+        const particleCount = 65;
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.vx = (Math.random() - 0.5) * 0.4;
+                this.vy = (Math.random() - 0.5) * 0.4;
+                this.radius = Math.random() * 1.5 + 1;
+            }
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                if (this.x < 0 || this.x > width) this.vx *= -1;
+                if (this.y < 0 || this.y > height) this.vy *= -1;
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(163, 230, 53, 0.4)';
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < particleCount; i++) {
+            particles.push(new Particle());
+        }
+
+        function drawConnections() {
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dist = Math.hypot(particles[i].x - particles[j].x, particles[i].y - particles[j].y);
+                    if (dist < 120) {
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.strokeStyle = `rgba(132, 204, 22, ${0.12 * (1 - dist / 120)})`;
+                        ctx.lineWidth = 0.6;
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            drawConnections();
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+
+        window.addEventListener('resize', () => {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        });
+    </script>
+</body>
+</html>
